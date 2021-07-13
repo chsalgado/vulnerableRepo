@@ -1,0 +1,14 @@
+  steps:
+  - checkout: self
+  clean: true
+
+  - task: UsePythonVersion@0
+  inputs:
+      versionSpec: 3.8
+
+  - pwsh: |
+      pip install --upgrade pip
+      # random yml comment
+      pip install --random-flag FLAG_VAL --random-flag2 FLAG_VAL2 --extra-index-url $(PIP_EXTRA_INDEX_URL) .[dev]
+  displayName: install dependencies
+  workingDirectory: $(directory)
